@@ -1,10 +1,20 @@
 package com.stepDef;
 
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Duration;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.pageFactory.LoginPageOrange;
 
@@ -48,13 +58,32 @@ public class LoginSteps {
 
 	@Then("^user click the Sign in button a$")
 	public void user_click_the_Sign_in_button_a() throws Throwable {
-	    Assert.assertTrue(2==4);
-	    
+	 
+		WebElement login = driver.findElement(By.xpath("//*[@name='Submit']"));
+		login.click();
+		
 	}
 
 	@When("^user click on log out button for Orange Hrm a$")
 	public void user_click_on_log_out_button_for_Orange_Hrm_a() throws Throwable {
-	    
-	    
+		
+		
+	    WebElement welcome = driver.findElement(By.xpath("//*[contains(text(),'Welcome')]"));
+	    WebElement logout = driver.findElement(By.xpath("//*[contains(text(),'Logout')]"));
+		welcome.click();
+		
+		//WebDriverWait wait = new WebDriverWait(driver,10);
+		//wait.until(ExpectedConditions.visibilityOf(logout)).click();
+		
+		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		//logout.click();
+		
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)                     
+				.withTimeout(10, TimeUnit.SECONDS)                    
+				.pollingEvery(5, TimeUnit.SECONDS); 
+		wait.until(ExpectedConditions.visibilityOf(logout)).click();
+		
+			
+		
 	}
 }
