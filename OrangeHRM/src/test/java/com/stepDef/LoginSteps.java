@@ -83,7 +83,7 @@ public class LoginSteps {
 				.pollingEvery(5, TimeUnit.SECONDS); 
 		wait.until(ExpectedConditions.visibilityOf(logout)).click();
 		
-			
+			System.out.println("this is a test for new branch");
 		
 	}
 }
