@@ -1,11 +1,15 @@
 @jahidCode
 Feature: Validate login function in Orange HRM 
 
-Scenario: User able to login with valid credential 
-	Given user open web browser and navigate to HRM login screen a 
-	Then user Navigate to Page and verify the Page Title is "OrangeHRM" a
-	And user enter a valid username and password a
-	And user click the Sign in button a
-	Then user Navigate to Page and verify the Page Title is "OrangeHRM" a
-	When user click on log out button for Orange Hrm a
-	Then user Navigate to Page and verify the Page Title is "OrangeHRM" a
+
+	
+	Scenario: User not able to save password with only numbers
+	Given user open web browser and navigate to facebook.com
+	Then user Navigate to Page and verify the Page Title is "Facebook"
+	And user click on the create new account button
+	And user enter first name and last name
+	Then usre enter valid email address
+	And user enter password with only numbers
+	
+	
+	# this is a test to update git
